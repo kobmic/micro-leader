@@ -1,6 +1,13 @@
 amqp = require 'amqp'
 
-rabbitMqConnection = amqp.createConnection({ host: 'localhost' })
+local =
+    host: 'localhost'
+
+laburl = 'amqp://kwiwswxf:2buomLESEgNRRdMWXJ-fFLbpP61mX8Pu@striped-ibex.rmq.cloudamqp.com/kwiwswxf'
+
+rabbitMqConnection = amqp.createConnection(laburl)
+
+
 
 onlineMsg =
     createdBy: "Mike",
