@@ -6,6 +6,7 @@ local =
 laburl = 'amqp://kwiwswxf:2buomLESEgNRRdMWXJ-fFLbpP61mX8Pu@striped-ibex.rmq.cloudamqp.com/kwiwswxf'
 
 rabbitMqConnection = amqp.createConnection(laburl)
+#rabbitMqConnection = amqp.createConnection(local)
 
 
 
@@ -21,7 +22,7 @@ options =
 
 rabbitMqConnection.on 'ready', () ->
     console.log 'Connected!'
-    exchange = rabbitMqConnection.exchange('lab');
+    exchange = rabbitMqConnection.exchange('lab', options: {type: 'topic'});
     queue = rabbitMqConnection.queue('leaderboard-ui-queue');
     queue.bind(exchange, '#')
 
